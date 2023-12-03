@@ -1,0 +1,53 @@
+{% extends 'user/userhome.html' %}
+ 
+{% block content %}
+{% load static %}
+
+<div class="card" style="color:black">
+<div class="container "><br>
+<h1>Welcome to Multiple Choice Test</h1>
+ 
+<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+ <form method='post' action='' style="margin-left:25px;">
+    {% csrf_token %}
+    {% for q  in questions %}
+
+    <div class="form-group">
+
+      <label for="question">{{forloop.counter}}. {{q.question}}</label>
+    </div>
+
+    (A)   <input type="radio" id="optiona" name="{{q.question}}" value="option1">
+                    <label for="optiona">{{ q.option_1}}</label><br>
+                  (B)  <input type="radio" id="optionb" name="{{q.question}}" value="option2">
+                    <label for="optionb">{{ q.option_2}}</label><br>
+                  (C)  <input type="radio" id="optionc" name="{{q.question}}" value="option3">
+                    <label for="optionc">{{ q.option_3}}</label><br>
+                  (D)  <input type="radio" id="optiond" name="{{q.question}}" value="option4">
+                    <label for="optiond">{{ q.option_4}}</label><br>
+     <br><br>
+    {% endfor %}
+    <input id='timer' type='hidden' name="timer" value="">
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    {% block script %}
+        <script>
+ 
+            console.log('hello world')
+            const timer=document.getElementById('displaytimer')
+            console.log(timer.textContent)
+            const inputtag = document.getElementById('timer')
+ 
+            t=0
+            setInterval(()=>{
+                t+=1
+                timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
+                inputtag.value = t
+            },1000)
+        </script>
+    {% endblock script %}
+ 
+</div>
+</div>
+{% endblock %}

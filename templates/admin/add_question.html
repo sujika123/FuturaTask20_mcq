@@ -1,0 +1,37 @@
+{% extends 'admin/adminhome.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class="card">
+
+                   <br> <H3 class="text-center" style="color:black;">ADD QUESTION</H3>
+
+                <br><br>
+                <div class="task_list_main">
+                    <ul class="task_list">
+                        <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                    </ul>
+                </div>
+
+                    <div style="margin-left:610px;"><button class="btn btn-primary" type = "submit">Submit</button></div>
+<!--                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--<form method="post" enctype="multipart/form-data" style="background-color:blue;width:500px;height:600px;margin-left:200px;color:white;margin-top:70px;">-->
+<!--<div style="margin-left:100px;margin-top:70px;">-->
+<!--    {% csrf_token %}-->
+<!--    {{form|crispy}}-->
+<!--    <br>-->
+<!--    <button type="submit">Submit</button>-->
+<!--</div>-->
+<!--</form>-->
+{% endblock %}
